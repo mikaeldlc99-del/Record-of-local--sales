@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reporteHoras.css" />
+    <title>Hourly Report</title>
+  </head>
+  <body>
+    <!-- COLUMNA 1: RESUMEN DINÁMICO POR FECHA Y HORA -->
+    <div class="pivot-container">
+      <div class="form-header">
+        <h2>Resumen por Hora</h2>
+        <a href="generalRegisters.html" id="aLimpiar" target="_blank">See all registers</a>
+      </div>
+      <div class="table-responsive">
+        <table id="tabla-pivot" class="pivot-table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Completado</th>
+              <th>Pendiente</th>
+              <th>Observado</th>
+              <th>Total General</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyPivot"></tbody>
+          <tfoot id="tfootPivot"></tfoot>
+        </table>
+      </div>
+    </div>
+    <script src="reporteHoras.js"></script>
+  </body>
+</html>

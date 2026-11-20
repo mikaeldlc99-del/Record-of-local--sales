@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="generalRegisters.css">
+  <title>General registers</title>
+</head>
+<body>
+  <div class="pivot-container">
+        <div class="form-header">
+      <h2>Todos los Registros</h2>
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <button type="button" onclick="exportarCSV()" class="btn-excel">
+          Exportar Excel
+        </button>
+        <a href="reporteHoras.html">← Volver al Resumen por horas</a>
+      </div>
+    </div>
+
+
+    <div class="table-responsive">
+      <table id="tabla-todos-registros">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>DNI/C.E/RUC</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody id="tbodyTodosRegistros"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="generalRegisters.js"></script>
+</body>
+</html>

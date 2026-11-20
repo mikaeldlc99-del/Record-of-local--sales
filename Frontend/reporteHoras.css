@@ -1,0 +1,167 @@
+:root {
+  --bg-body: #a7b0cf;
+  --bg-card: #293769;
+  --border-card: transparent;
+  --text-main: #ffffff;
+  --text-label: #ffffff;
+  --bg-input: #ffffff;
+  --border-input: #ccc;
+  --text-input: #333333;
+  --bg-table: #ffffff;
+  --text-table: #333333;
+  --border-table: #ddd;
+  --bg-th: #1d2850;
+  --text-th: #ffffff;
+  --bg-hover: #dbe1f7;
+  --text-nodata: #64748b;
+  --color-exito: #4ade80;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-body);
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px 20px 20px 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.pivot-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  padding: 20px 30px; /* <-- 15px arriba, 30px a los lados y abajo */
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: var(--text-main);
+}
+
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px; /* <-- Empuja ambos textos hacia adentro por igual */
+}
+
+.form-header h2 {
+  color: white;
+  font-size: 24px;
+  margin-top: 0;      /* <-- Elimina el espacio extra arriba del título */
+  margin-bottom: 10px; /* <-- Controla la separación con la tabla */
+}
+
+.form-header a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.pivot-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pivot-fila-fecha {
+  background-color: rgba(255, 255, 255, 0.08);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pivot-fila-fecha:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  background-color: #3b5998;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pivot-fila-subtotal {
+  background-color: rgba(255, 255, 255, 0.05);
+  font-weight: bold;
+  border-bottom: 2px double var(--border-card);
+}
+
+.pivot-grand-total {
+  font-weight: bold;
+  font-size: 1.05em;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.oculto {
+  display: none;
+}
+
+.table-responsive {
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-table);
+  width: 100%;
+  overflow-x: auto; /* Activa el scroll horizontal interno */
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive table {
+  width: 100%;
+  min-width: 600px; /* Evita que las columnas se aplasten entre sí */
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-table);
+  color: var(--text-table);
+  overflow: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+th,
+td {
+  padding: 11px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-table);
+  font-size: 13.5px;
+}
+
+th {
+  background-color: var(--bg-th);
+  color: var(--text-th);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+th:last-child {
+  text-align: center;
+}
+
+td:last-child div {
+  justify-content: center;
+}
+
+tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.no-data {
+  text-align: center;
+  color: var(--text-nodata);
+  font-style: italic;
+  padding: 25px;
+}

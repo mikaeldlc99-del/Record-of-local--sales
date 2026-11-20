@@ -1,0 +1,444 @@
+:root {
+  --bg-body: #a7b0cf;
+  --bg-card: #293769;
+  --border-card: transparent;
+  --text-main: #ffffff;
+  --text-label: #ffffff;
+  --bg-input: #ffffff;
+  --border-input: #ccc;
+  --text-input: #333333;
+  --bg-table: #ffffff;
+  --text-table: #333333;
+  --border-table: #ddd;
+  --bg-th: #1d2850;
+  --text-th: #ffffff;
+  --bg-hover: #dbe1f7;
+  --text-nodata: #64748b;
+  --color-exito: #4ade80;
+  --color-error: #f87171;
+  --color-info: #60a5fa;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-body);
+  display: flex;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 75px 20px 20px 20px;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Cabecera del formulario con título y contador por hora */
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.form-header h1 {
+  margin: 0; /* Evita que el margen del h1 desalinee la tarjeta */
+}
+
+/* Diseño de la tarjeta */
+.hora-card {
+  background-color: #1d2850;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  min-width: 95px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hora-titulo {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #a7b0cf;
+  margin-bottom: 2px;
+}
+
+.hora-numero {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  color: #4ade80;
+  line-height: 1.1;
+}
+
+.form-container,
+.panel,
+.grid-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  color: var(--text-main);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/*Form*/
+.form-group {
+  margin-bottom: 15px;
+}
+
+.label {
+  color: var(--text-label);
+  font-size: 14px;
+}
+
+.search-group {
+  display: flex;
+  gap: 8px;
+}
+
+/*.search-group input {
+}*/
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: var(--text-input);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.2s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #3bf66a;
+}
+
+textarea {
+  resize: vertical;
+  height: 150px;
+}
+
+.btn-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 11px 14px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+a {
+  padding: 11px 14px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
+}
+
+#btnBuscar {
+  background-color: #2563eb;
+  width: auto;
+  white-space: nowrap;
+}
+
+#btnBuscar:hover {
+  background-color: #1d4ed8;
+}
+
+#aLimpiar {
+  background-color: #475569;
+  width: auto;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+#aLimpiar:hover {
+  background-color: #334155;
+}
+
+#btnEnviar {
+  background-color: #16a34a;
+  width: 100%;
+}
+
+#btnEnviar:hover {
+  background-color: #15803d;
+}
+
+#btnCancelar {
+  background-color: #475569;
+  width: 100%;
+  display: none;
+}
+#btnCancelar:hover {
+  background-color: #334155;
+}
+
+#mensaje {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+.exito {
+  color: var(--color-exito);
+}
+.error {
+  color: var(--color-error);
+}
+.info {
+  color: var(--color-info);
+}
+
+/*Templates*/
+/* Template panel adapted for Dark/Light Mode variables */
+.panel {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  color: var(--text-main);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  min-width: 0; /* Evita desbordamientos */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/*Internal styles for the templates section*/
+.agregar-plantilla {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.agregar-plantilla input {
+  flex: 1;
+  min-width: 0; /* <--- This fixes the '+' button so it doesn't stick out or get squashed. */
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-input);
+  color: var(--text-input);
+  outline: none;
+}
+
+.btn-agregar {
+  background-color: #16a34a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.btn-agregar:hover {
+  background-color: #188d43;
+}
+
+.lista-plantillas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 850px; /* Evita que crezca demasiado hacia abajo */
+  overflow-y: auto;  /* Agrega barra de desplazamiento si hay muchas */
+}
+
+.tarjeta-plantilla {
+  background-color: var(--bg-input); /* Se adapta al modo claro y oscuro */
+  color: var(--text-input);
+  border: 1px solid var(--border-input);
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.tarjeta-plantilla p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.acciones-plantilla {
+  display: flex;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.btn-copiar {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-copiar:hover {
+  background-color: #2563eb;
+}
+
+.btn-borrar-mini {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-borrar-mini:hover {
+    background-color: #b63030;
+}
+
+.tabla-responsive {
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-table);
+  width: 100%;
+  overflow-x: auto; /* Activa el scroll horizontal interno */
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabla-responsive table {
+  width: 100%;
+  min-width: 600px; /* Evita que las columnas se aplasten entre sí */
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-table);
+  color: var(--text-table);
+  overflow: hidden;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+th,
+td {
+  padding: 11px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-table);
+  font-size: 13.5px;
+}
+
+th {
+  background-color: var(--bg-th);
+  color: var(--text-th);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+th:last-child {
+  text-align: center;
+}
+
+td:last-child div {
+  justify-content: center;
+}
+
+tr:hover {
+  background-color: var(--bg-hover);
+}
+
+.no-data {
+  text-align: center;
+  color: var(--text-nodata);
+  font-style: italic;
+  padding: 25px;
+}
+
+.btn-editar {
+  background-color: #eab308;
+  color: #0f172a;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.btn-editar:hover {
+  background-color: #ca8a04;
+}
+
+.btn-eliminar {
+  background-color: #dc2626;
+  color: #ffffff;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+.btn-eliminar:hover {
+  background-color: #b91c1c;
+}
+
+th:nth-child(1),
+td:nth-child(1),
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(3),
+td:nth-child(3),
+th:nth-child(4),
+td:nth-child(4),
+th:nth-child(5),
+td:nth-child(5),
+th:nth-child(7),
+td:nth-child(7) {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* On small screens (mobile devices or very narrow windows), it switches to 1 column. */
+@media (max-width: 768px) {
+  .app-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

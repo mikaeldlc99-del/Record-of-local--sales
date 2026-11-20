@@ -1,0 +1,89 @@
+1.Ejecutar el script SQL para crear la base de datos y la tabla
+CREATE DATABASE IF NOT EXISTS ventas_db;
+USE ventas_db;
+
+CREATE TABLE IF NOT EXISTS registros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    documento VARCHAR(20) NOT NULL,
+    fecha VARCHAR(20) NOT NULL,
+    hora VARCHAR(20) NOT NULL,
+    estado VARCHAR(30) NOT NULL,
+    observaciones TEXT
+);
+
+• Creamos la base de datos ventas_db separada de las demás que ya tienes.
+• Dentro creamos la tabla registros con 6 columnas idénticas a las que usabas antes, dejando que MySQL genere el id corto (1, 2, 3...) automáticamente con AUTO_INCREMENT.
+
+
+
+2.Inicializar tu carpeta Backend con Node.js y Express
+
+cd Backend
+npm init -y
+npm install express mysql2 cors dotenv
+
+• cd Backend: Mueve la terminal dentro de tu carpeta Backend.
+• npm init -y: Crea el archivo package.json, que es la ficha técnica de tu proyecto Node.js donde se registran las librerías instaladas.
+• npm install express mysql2 cors dotenv: Descarga e instala las 4 piezas clave de tu servidor:
+	• express: Crea las rutas de tu API (GET, POST, PUT, DELETE).
+	• mysql2: Permite que Node.js se conecte y envíe consultas a tu base de datos ventas_db.
+	• cors: Autoriza que tu Frontend pueda comunicarse con tu Backend sin bloqueos de seguridad del navegador.
+	• dotenv: Permite guardar los datos de conexión a MySQL en un archivo privado (.env).
+
+3.Crear el archivo de variables de entorno (.env)
+
+Dentro de tu carpeta Backend, crea un archivo nuevo llamado exactamente .env y pegar lo siguiente:
+
+PORT=3000
+DB_HOST=127.0.0.1
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=ventas_db
+
+• Separar la configuración del código: En lugar de escribir el nombre de tu base de datos o contraseña directamente dentro del código JavaScript, los guardamos en .env. Si mañana subes este proyecto a GitHub o cambias de PC, solo editas este archivo.
+• PORT=3000: Es el puerto donde vivirá tu servidor Backend (http://localhost:3000).
+• DB_HOST=127.0.0.1, DB_USER=root y DB_PASSWORD=: Son los mismos datos que usaste hace un momento para conectarte a tu MySQL de XAMPP desde VS Code (usuario root y contraseña vacía).
+• DB_NAME=ventas_db: Le indica a Node.js exactamente cuál de tus bases de datos debe abrir.
+
+
+***
+Un detalle de buena práctica (.gitignore)
+
+Ya que antes comentaste que subes tus proyectos a GitHub, crea también dentro de Backend un archivo llamado .gitignore y escribe adentro:**
+
+node_modules
+.env
+
+Esto evita que GitHub suba miles de archivos pesados de node_modules o tus credenciales privadas.
+
+4: Crear la conexión a MySQL (db.js)
+
+Dentro de tu carpeta Backend, crea un archivo nuevo llamado db.js
+
+• mysql2/promise: Es la versión moderna de mysql2 que nos permite usar async / await (código más limpio y fácil de leer).
+• mysql.createPool(...): En lugar de abrir y cerrar una conexión cada vez que guardas una venta (lo cual es lento), un pool mantiene hasta 10 conexiones listas y reutilizables para que tu aplicación responda al instante.
+• process.env.DB_...: Lee automáticamente los valores que escribiste en tu archivo .env.
+• pool.getConnection(): Hace una prueba rápida al arrancar para confirmarnos en la consola si MySQL respondió bien o si hay algún error (por ejemplo, si olvidaste encender MySQL en XAMPP).
+
+
+***Prueba rápida en la terminal***
+
+Para verificar que este archivo funciona antes de seguir, ejecuta en tu terminal (asegurándote de estar dentro de Backend):
+
+node db.js
+
+
+
+subir a GitHub
+regresar a la carpeta principal (cd ..)
+
+git init
+git add .
+git commit -m "Avance inicial con Frontend y configuracion Backend MySQL"
+git branch -M main
+git remote add origin https://github.com/mikaeldlc99-del/Record-of-local--sales.git
+git push -u origin main
+
+<-- aqui pegar la ruta que da github al crear el repositorio en la misma web dentro del botn <> Code
+
+
