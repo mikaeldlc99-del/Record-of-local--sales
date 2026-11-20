@@ -81,9 +81,10 @@ git init
 git add .
 git commit -m "Avance inicial con Frontend y configuracion Backend MySQL"
 git branch -M main
-git remote add origin https://github.com/mikaeldlc99-del/Record-of-local--sales.git
+git remote add origin https://github.com/mikaeldlc99-del/Record-of-local--sales.git <-- aqui pegar la ruta que da github al crear el repositorio en la misma web dentro del botn <> Code
 git push -u origin main
 
-<-- aqui pegar la ruta que da github al crear el repositorio en la misma web dentro del botn <> Code
+*git push -u origin main --force* <-- Le indica a GitHub que sobrescriba ese archivo inicial vacío que tenía en la nube con tu proyecto completo de la PC (Frontend + Backend).
+
 
 
