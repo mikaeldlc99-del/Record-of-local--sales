@@ -86,5 +86,39 @@ git push -u origin main
 
 *git push -u origin main --force* <-- Le indica a GitHub que sobrescriba ese archivo inicial vacío que tenía en la nube con tu proyecto completo de la PC (Frontend + Backend).
 
+**para encender db.js
+node db.js
+
+5:Crear server.js (Tu servidor con Express)
+
+¿Qué estamos haciendo aquí?
+
+• app.use(cors()) y app.use(express.json()): Son dos configuraciones obligatorias. La primera da permiso de entrada a peticiones externas (como tu página web), y la segunda traduce el texto JSON que viaja por internet a un objeto JavaScript legible para Node.js.
+• app.get("/", ...): Crea tu primera ruta (endpoint). Cuando entres a http://localhost:3000 en tu navegador, el servidor te responderá con ese texto.
+• app.listen(PORT, ...): Deja el servidor encendido escuchando peticiones constantemente.
+
+6: Agregar las 4 rutas CRUD en server.js
+
+Coloca estas 4 rutas debajo de la ruta de prueba app.get("/", ...) y antes de app.listen(PORT, ...):
+
+
+¿Qué estamos haciendo exactamente aquí?
+
+• async / await y try / catch: Esperamos a que MySQL termine la consulta antes de responder al navegador; si ocurre algún fallo, catch evita que el servidor se caiga y devuelve el error claro.
+• Signos de interrogación ? (VALUES (?, ?, ?, ?, ?)): Son consultas parametrizadas. Evitan que alguien rompa tu base de datos escribiendo comillas o código SQL malicioso dentro del campo Observaciones (inyección SQL).
+• result.insertId: Cuando MySQL guarda la fila nueva, automáticamente nos devuelve el número corto generado (1, 2, 3...).
+
+7: Conectar Frontend/app.js a tu API
+
+¿Qué cambia respecto a localStorage?
+
+• async y await fetch(...): Como consultar a MySQL toma unos milisegundos, await le dice a JavaScript: "espera a que el servidor responda antes de pasar a la siguiente línea".
+• headers: { "Content-Type": "application/json" }: Le avisa a Express que el paquete que le estás enviando va en formato JSON.
+Prueba guardar un registro desde index.html y luego recarga http://localhost:3000/api/registros (o mira la tabla registros en el ícono del cilindro de VS Code) para verificar que ya se guarda en MySQL. Avísame cuando lo tengas listo para conectar reporteHoras.js y generalRegisters.js.
+
+8: Conectar reporteHoras.js y generalRegisters.js a MySQL
+Parte 1: Conectar Frontend/reporteHoras.js a MySQL
+Parte 2: Conectar Frontend/generalRegisters.js a MySQL
+
 
 
