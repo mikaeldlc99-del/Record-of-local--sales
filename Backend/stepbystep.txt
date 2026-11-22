@@ -122,7 +122,5 @@ Parte 2: Conectar Frontend/generalRegisters.js a MySQL
 
 ***Para tener la bd disponible siempre, una opcion es usar https://tidbcloud.com/, crear la bd, hacer la conexion y copiar los datos en el archivo .env
 
-git init
-git branch -M main
-git remote add origin https://github.com/mikaeldlc99-del/Record-of-local--sales.git
+
 
