@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="general-styles.css" />
+    <title>Sales registers</title>
+  </head>
+  <body>
+    <div class="app-grid">
+      <!-- COLUMN 1: FORM -->
+      <div class="form-container">
+        <div class="form-header">
+          <h1 id="formTitulo">New Register</h1>
+          <!-- TARJETA DE REGISTROS EN LA HORA ACTUAL -->
+          <div class="hora-card" title="Registros creados en la hora en curso">
+            <span class="hora-titulo" id="rangoHoraActual">Esta hora</span>
+            <strong class="hora-numero" id="contadorHoraActual">0</strong>
+          </div>
+        </div>
+        <form id="registroForm">
+          <div class="form-group">
+            <label for="id">DNI/C.E/RUC:</label>
+            <div class="search-group">
+              <input type="text" id="id" required placeholder="Ej: 45404471" />
+              <button type="button" id="btnBuscar" onclick="buscarRegistro()">
+                Search ID
+              </button>
+              <a href="reporteHoras.html" id="aLimpiar" target="_blank"
+                >Reports</a
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="estado">Status:</label>
+            <select id="estado" required>
+              <option value="" disabled selected>Select a status</option>
+              <option value="Pendiente">Pending</option>
+              <option value="Completado">Completed</option>
+              <option value="Observado">Under Review</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="observaciones">Notes:</label>
+            <textarea
+              id="observaciones"
+              placeholder="Additional details.."
+            ></textarea>
+          </div>
+
+          <div class="btn-actions">
+            <button type="submit" id="btnEnviar">Save Register</button>
+            <button
+              type="button"
+              id="btnCancelar"
+              onclick="resetearFormulario()"
+            >
+              Cancel Editing
+            </button>
+          </div>
+
+          <div id="mensaje"></div>
+        </form>
+      </div>
+
+      <!-- COLUMN 2: TEMPLATES -->
+      <section class="panel panel-plantillas">
+        <h2>Quick Templates</h2>
+
+        <!-- Short form for adding new templates -->
+        <div class="agregar-plantilla">
+          <input
+            type="text"
+            id="nueva-plantilla-texto"
+            placeholder="Escribe una nueva plantilla..."
+          />
+          <button
+            type="button"
+            onclick="agregarPlantilla()"
+            class="btn-agregar"
+          >
+            +
+          </button>
+        </div>
+        <!-- List where saved templates will be displayed -->
+        <div id="lista-plantillas" class="lista-plantillas">
+          <!-- Example of precharged template -->
+          <div class="tarjeta-plantilla">
+            <p>Client satisfied with the service provided.</p>
+            <div class="acciones-plantilla">
+              <button
+                type="button"
+                onclick="copiarTexto(this)"
+                class="btn-copiar"
+              >
+                Copiar
+              </button>
+              <button
+                type="button"
+                onclick="eliminarPlantilla(this)"
+                class="btn-borrar-mini"
+              >
+                X
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 3: QUICK SEARCH RESULTS IN INDEX -->
+      <div
+        id="contenedor-busqueda-index"
+        class="grid-container"
+        style="display: none; grid-column: 1 / -1; margin-top: 20px"
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+          "
+        >
+          <h2>Records Found</h2>
+          <button
+            type="button"
+            onclick="cerrarBusquedaIndex()"
+            class="btn-borrar-mini"
+          >
+            Close
+          </button>
+        </div>
+        <div class="tabla-responsive">
+          <table id="tabla-busqueda-index">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>DNI/C.E/RUC</th>
+                <th>Date</th>
+                <th>Hour</th>
+                <th>Status</th>
+                <th>Notes</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyBusquedaIndex"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
