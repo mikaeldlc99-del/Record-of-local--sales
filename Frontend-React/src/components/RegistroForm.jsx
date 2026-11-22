@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+//const API_URL = "http://localhost:3000/api/registros";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api/registros";
 
-const API_URL = "http://localhost:3000/api/registros";
 
 export default function RegistroForm({ onVerReportes }) {
   // 1. Estados del formulario
